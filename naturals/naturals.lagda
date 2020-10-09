@@ -17,10 +17,10 @@ data ℕ : Set where
 
 _+_ : ℕ → ℕ → ℕ
 zero + n = n
-suc m + n = suc (m + n)
-˘
+(suc m) + n = suc (m + n)
+
 _*_ : ℕ → ℕ → ℕ
-˘zero * n = zero
+zero * n = zero
 (suc m) * n = n + (m * n)
 
 _∸_ : ℕ → ℕ → ℕ
@@ -122,9 +122,11 @@ _ = refl
 dbl : ℕ → ℕ
 dbl zero = zero
 dbl (suc m) = suc (suc (dbl m))
-˘
--- fromBin : Bin → ℕ
--- fromBin 
+
+fromBin : Bin → ℕ
+fromBin ⟨⟩ = zero
+fromBin (m O) = dbl (fromBin m)
+fromBin (m I) = suc (dbl (fromBin m)) 
 
 -- _ : toBin ≡ fromBin
 
